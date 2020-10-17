@@ -21,7 +21,13 @@ function dateDiff() {
   
 	// To calculate the no. of days between two dates 
 	let Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24); 
-  
-	//To display the final no. of days (result) 
-	document.getElementById("dateOutput").innerHTML=Difference_In_Days.toFixed(0);
+  console.log(Difference_In_Days);
+
+	if (Difference_In_Days >= 7) {
+		document.getElementById("dateOutput").innerHTML= Math.floor(Difference_In_Days/7) + " weeks" + " " + Difference_In_Days.toFixed(0)%7 + " days";
+
+	} else {
+		document.getElementById("dateOutput").innerHTML=Difference_In_Days.toFixed(0) + " days";
+	}
 }
+
