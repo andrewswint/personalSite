@@ -9,18 +9,19 @@ function LengthConverter(valNum) {
 
 // Date difference 
 function dateDiff() {
-  var date1 = new Date(document.getElementById("date1").value);
-  console.log(date1);
-  var date2 = new Date (document.getElementById("date2").value);
-  console.log(date2);
 
+	let date1 = new Date();
+	if (document.getElementById("date1").value != "") {
+		date1 = new Date(document.getElementById("date1").value);
+	}
+ 	let date2 = new Date (document.getElementById("date2").value);
   
-// To calculate the time difference of two dates 
-var Difference_In_Time = date2.getTime() - date1.getTime(); 
+	// To calculate the time difference of two dates 
+	let Difference_In_Time = date2.getTime() - date1.getTime(); 
   
-// To calculate the no. of days between two dates 
-var Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24); 
+	// To calculate the no. of days between two dates 
+	let Difference_In_Days = Difference_In_Time / (1000 * 3600 * 24); 
   
-//To display the final no. of days (result) 
-document.getElementById("dateOutput").innerHTML=Difference_In_Days; 
+	//To display the final no. of days (result) 
+	document.getElementById("dateOutput").innerHTML=Difference_In_Days.toFixed(0);
 }
