@@ -6,6 +6,7 @@
 	<link rel="stylesheet" href="style/runnersTools.css">
 </head>
 <body>
+	<!-- Distance converter -->
 	<p>Kilometers to convert to Miles:</p>
 
 	<p>
@@ -23,6 +24,17 @@
 </p>
 <p>Kilometers: <span id="outputKilometers"></span></p>
 
+<!-- Days to date -->
+<p>Time till a date</p>
+<label for="date1">Start date</label>
+<input id="date1" type="text" placeholder="06/30/2019">
+
+<label for="date2">Start date</label>
+<input id="date2" type="text" placeholder="06/30/2019">
+
+<button onclick="dateDiff()">Click me</button>
+
+<p>Days left: <span id="dateOutput"></span></p>
 	<script src="js/runnersTools.js"></script>
 </body>
 </html>
