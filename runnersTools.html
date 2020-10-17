@@ -1,0 +1,28 @@
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Runners Tools</title>
+	<link rel="stylesheet" href="style/runnersTools.css">
+</head>
+<body>
+	<p>Kilometers to convert to Miles:</p>
+
+	<p>
+ 	<label>Kilometers</label>
+  	<input id="inputKilometers" type="number" placeholder="Kilometers" oninput="LengthConverter(this.value)" onchange="LengthConverter(this.value)">
+	</p>
+	<p>Miles: <span id="outputMiles"></span></p>
+
+
+	<p>Miles to convert to Kilometers:</p>
+
+<p>
+  <label>Miles</label>
+  <input id="inputMiles" type="number" placeholder="Miles" oninput="LengthConverter(this.value)" onchange="LengthConverter(this.value)">
+</p>
+<p>Kilometers: <span id="outputKilometers"></span></p>
+
+	<script src="js/runnersTools.js"></script>
+</body>
+</html>
