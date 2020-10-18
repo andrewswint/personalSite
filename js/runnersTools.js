@@ -33,7 +33,8 @@ function dateDiff() {
 
 
 // Pace calculator
-var distanceInput = document.getElementById("distance"),
+var milesInput = document.getElementById("miles"),
+	kilometersInput = document.getElementById("kilometers"),
 	hoursInput = document.getElementById("hours"),
 	minutesInput = document.getElementById("minutes"),
 	secondsInput = document.getElementById("seconds"),
@@ -41,37 +42,53 @@ var distanceInput = document.getElementById("distance"),
 	paceText = document.getElementById("pace");
 
 calculateBtn.addEventListener("click", function() {
-	var miles = parseFloat(distanceInput.value),
+	var miles = parseFloat(milesInput.value),
+		kilometers = parseFloat(kilometersInput.value),
 		hours = parseFloat(hoursInput.value),
 		minutes = parseFloat(minutesInput.value),
 		seconds = parseFloat(secondsInput.value);
 
-	if(isNaN(miles)) {
-		distanceInput.style.borderColor = "red";
-		return;
-	}
-	else {
-		distanceInput.style.borderColor = "initial";
-	}
-	if(isNaN(hours)) {
-		hours = 0;
-	}
-	else {
-		hoursInput.style.borderColor = "initial";
-	}
-	if(isNaN(minutes)) {
-		minutes = 0;
-	}
-	else {
-		minutesInput.style.borderColor = "initial";
-	}
-	if(isNaN(seconds)) {
-		seconds = 0
-	}
-	else {
-		secondsInput.style.borderColor = "initial";
-	}
+	// if(isNaN(miles)) {
+	// 	distanceInput.style.borderColor = "red";
+	// 	return;
+	// }
+	// else {
+	// 	distanceInput.style.borderColor = "initial";
+	// }
+	// if(isNaN(miles)) {
+	// 	distanceInput.style.borderColor = "red";
+	// 	return;
+	// }
+	// else {
+	// 	distanceInput.style.borderColor = "initial";
+	// }
 
+	if (isNaN(hours) && isNaN(minutes) && isNaN(seconds)) {
+		hoursInput.style.borderColor = "red";
+		minutesInput.style.borderColor = "red";		
+		secondsInput.style.borderColor = "red";
+		document.getElementById("pace").innerHTML="Please input a time";
+		return;
+	} else {
+		if(isNaN(hours)) {
+			hours = 0;
+		}
+		if(isNaN(minutes)) {
+			minutes = 0;
+		}
+		if(isNaN(seconds)) {
+			seconds = 0
+		}
+	}
+	console.log(kilometers + " kilometers")
+
+	console.log(miles + " miles")
+
+	if (isNaN(miles) && isNaN(kilometers)) {
+		milesInput.style.borderColor = "red";
+		kilometersInput.style.borderColor = "red";
+		document.getElementById("pace").innerHTML="Please input one distance";
+	} else if(isNaN(kilometers)) {
 	var totalMinutes = hours * 60 + minutes + seconds / 60,
 		pace = totalMinutes / miles,
 		paceMinutes = Math.floor(pace),
@@ -82,6 +99,26 @@ calculateBtn.addEventListener("click", function() {
 	}
 
 	document.getElementById("pace").innerHTML="You need to run " + paceMinutes + ":" + paceSeconds + " minutes per mile.";
+	} else if (isNaN(miles)) {
+		var totalMinutes = hours * 60 + minutes + seconds / 60,
+		pace = totalMinutes / kilometers,
+		paceMinutes = Math.floor(pace),
+		paceSeconds = Math.round((pace - paceMinutes) * 60);
+
+	if(paceSeconds < 10) {
+		paceSeconds = "0" + paceSeconds;
+	}
+
+	document.getElementById("pace").innerHTML="You need to run " + paceMinutes + ":" + paceSeconds + " minutes per kilometer.";
+	} else if(!isNaN(miles) && !isNaN(kilometers)) {
+		milesInput.style.borderColor = "red";
+		kilometersInput.style.borderColor = "red";
+		document.getElementById("pace").innerHTML="Please input only one distance";
+	} else if (isNaN(miles) && isNaN(kilometers)) {
+		milesInput.style.borderColor = "red";
+		kilometersInput.style.borderColor = "red";
+		document.getElementById("pace").innerHTML="Please input one distance";
+	}
 });
 
 
