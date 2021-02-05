@@ -84,6 +84,13 @@ calculateBtn.addEventListener("click", function() {
 
 	console.log(miles + " miles")
 
+	if (miles < 0 || kilometers < 0) {
+		milesInput.style.borderColor = "red";
+		kilometersInput.style.borderColor = "red";
+		document.getElementById("pace").innerHTML="Please input one distance greater than 0";
+		return;
+	}
+
 	if (isNaN(miles) && isNaN(kilometers)) {
 		milesInput.style.borderColor = "red";
 		kilometersInput.style.borderColor = "red";
